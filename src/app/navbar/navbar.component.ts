@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -8,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
-
+  onSeeRules() {
+    console.log("see rules")
+  }
+  onRestart() {
+    console.log("restart")
+  }
 }
