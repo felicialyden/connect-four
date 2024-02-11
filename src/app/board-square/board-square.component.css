@@ -1,0 +1,10 @@
+.board-element {
+    border: 2px solid black;
+    height: 70px;
+    width: 70px;
+}
+
+.board-selected {
+    background-color: red;
+    cursor: not-allowed;
+}
