@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-board-square',
@@ -10,13 +10,15 @@ import { Component, Input } from '@angular/core';
 export class BoardSquareComponent {
   @Input() id! : number
   @Input() playerNo! : number
+  @Output() nextPlayer = new EventEmitter<number>();
+
   selected = false
 
   onClickBoardSquare(id: number) {
     if(this.selected) {
       return alert("This one is already taken")
     }
-    console.log(this.playerNo)
+    this.nextPlayer.emit(this.playerNo === 1? 2 : 1);
     this.selected = true
     document.getElementById(id.toString())?.classList.add("board-selected")
   }
