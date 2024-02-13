@@ -19,7 +19,7 @@ export class BoardSquareComponent {
       return alert("This one is already taken")
     }
     
-    document.getElementById(id.toString())?.classList.add(`board-selected-${this.playerNo}`)
+    document.getElementById(id)?.classList.add(`board-selected-${this.playerNo}`)
     this.chosenSquare.emit(id);
     this.selected = true
   }
