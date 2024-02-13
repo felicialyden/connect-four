@@ -6,10 +6,8 @@
 
 .board-selected-1 {
     background-color: red;
-    cursor: not-allowed;
 }
 
 .board-selected-2 {
     background-color: blue;
-    cursor: not-allowed;
 }

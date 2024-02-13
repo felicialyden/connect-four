@@ -8,20 +8,19 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrl: './board-square.component.css'
 })
 export class BoardSquareComponent {
-  @Input() id! : number
+  @Input() id! : string
   @Input() playerNo! : number
-  @Output() nextPlayer = new EventEmitter<number>();
+  @Output() chosenSquare = new EventEmitter<string>();
 
   selected = false
 
-  onClickBoardSquare(id: number) {
+  onClickBoardSquare(id: string) {
     if(this.selected) {
       return alert("This one is already taken")
     }
     
     document.getElementById(id.toString())?.classList.add(`board-selected-${this.playerNo}`)
-
-    this.nextPlayer.emit(this.playerNo === 1? 2 : 1);
+    this.chosenSquare.emit(id);
     this.selected = true
   }
 
