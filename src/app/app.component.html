@@ -1,9 +1,12 @@
 
   <main>
       <app-navbar></app-navbar>
-    <section class="game-content">
+  <section class="game-content">
       <app-player [playerNo]=1></app-player>
       <app-board (nextPlayer)="setNextPlayer($event)"></app-board>
       <app-player [playerNo]=2></app-player> 
   </section>
+  <div class="turn-tracker">
+    <app-turn-tracker [playerNo]=this.player></app-turn-tracker> 
+  </div>
   </main>
