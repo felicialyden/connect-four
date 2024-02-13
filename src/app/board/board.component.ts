@@ -31,11 +31,32 @@ export class BoardComponent {
     if(this.grid[posX].every(char => char === this.grid[posX][0]))  {
       return alert(`${this.grid[posX][0]} win`)
     }
+
     const verticalArr = this.grid.map((row) => row[posY])
     if(verticalArr.every(char => char === verticalArr[0]))  {
       return alert(`${verticalArr[0]} win`)
     }
 
+    const leftDiagonal: number[] = []
+    for (let i = 0; i < this.grid.length; i ++){
+      leftDiagonal.push(this.grid[i][i])
+    }
+
+    if(leftDiagonal.every(char => char === leftDiagonal[0]))  {
+      if(leftDiagonal[0] !== 0) {
+        return alert(`${leftDiagonal[0]} win`)
+      }
+    }
+    
+    const rightDiagonal: number[] = []
+    for (let i = this.grid.length - 1; i >= 0; i--){
+      rightDiagonal.push(this.grid[this.grid.length - 1 - i][i])
+    }
+    if(rightDiagonal.every(char => char === rightDiagonal[0]))  {
+      if(rightDiagonal[0] !== 0) {
+        return alert(`${rightDiagonal[0]} win`)
+      }
+    }
     
   }
 
