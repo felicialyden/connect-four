@@ -13,6 +13,8 @@ export class BoardNavComponent {
 
   
   onClickBoardSquare(event: MouseEvent) {
-    this.chosenLine.emit(Number((event.target as HTMLDivElement).id));
+    const lineId = (event.target as HTMLElement).closest(".board-nav-item")?.id
+    console.log(lineId)
+    this.chosenLine.emit(Number(lineId));
 }
 }
