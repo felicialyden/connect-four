@@ -14,7 +14,7 @@ import { BoardNavComponent } from './board-nav/board-nav.component';
 export class AppComponent {
   title = 'connect-four';
   player = 1
-  newGame = false
+  resetScore = false
   winner: number | null = null
   
   setNextPlayer(newPlayerNo: number) {
@@ -32,12 +32,12 @@ export class AppComponent {
   }
 
   onNewGame() {
-    this.player = 1
+    console.log('new game')
 
   }
 
   onResetScore() {
-    console.log('reset score')
+    this.resetScore = true
   }
 
 }
