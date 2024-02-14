@@ -1,5 +1,7 @@
 .board-element {
     border: 2px solid black;
+    border-radius: 10rem;
+    margin: 0.25rem;
     height: 70px;
     width: 70px;
 }
