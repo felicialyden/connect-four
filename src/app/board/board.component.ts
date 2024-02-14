@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { BoardSquareComponent } from '../board-square/board-square.component';
+import { BoardNavComponent } from '../board-nav/board-nav.component';
 
 @Component({
   selector: 'app-board',
   standalone: true,
-  imports: [BoardSquareComponent],
+  imports: [BoardSquareComponent, BoardNavComponent],
   templateUrl: './board.component.html',
   styleUrl: './board.component.css'
 })
@@ -13,21 +14,33 @@ export class BoardComponent {
   @Output() nextPlayer = new EventEmitter<number>();
   @Output() winner = new EventEmitter<number>();
   player = 1
+  posX = 0
+
   grid: number[][] = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0 , 0], [0, 0, 0, 0]]
 
-  setChosenSquare(id: string) {
-    console.log(id)
-    const idArr = id.split('')
-    const posX = Number(idArr[0]) -1
-    const posY = Number(idArr[2]) -1
-    this.grid[posX][posY] = this.player
-    this.checkWinning(posX, posY)
+  setChosenSquare(chosenLine: number) {
+    const posY = chosenLine
+    this.findSquare(chosenLine)
+    const squareId = `${this.posX}-${posY}`
+    document.getElementById(squareId)?.classList.add(`board-selected-${this.player}`)
+    this.checkWinning(this.posX, posY)
     this.player === 1 ? this.player = 2 : this.player = 1
     this.nextPlayer.emit(this.player);
   }
 
+  findSquare(posY: number) {
+    const verticalArr = this.grid.map((row) => row[posY])
+    for(let i = 3; i >= 0; i--){
+      if(verticalArr[i] === 0) {
+        this.grid[i][posY] = this.player
+        this.posX = i
+        return
+      }
+    }
+  }
+
   checkWinning(posX: number, posY :number){
-    if(this.grid[posX].every(char => char === this.grid[posX][0]))  {
+    if(this.grid[posX].every(char => char === this.grid[posX][0])) {
       this.winner.emit(this.grid[posX][0]);
       return
     }
