@@ -3,11 +3,12 @@ import { BoardComponent } from './board/board.component';
 import { PlayerComponent } from './player/player.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { TurnTrackerComponent } from './turn-tracker/turn-tracker.component';
+import { BoardNavComponent } from './board-nav/board-nav.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [BoardComponent, PlayerComponent, NavbarComponent, TurnTrackerComponent],
+  imports: [BoardComponent, PlayerComponent, NavbarComponent, TurnTrackerComponent, BoardNavComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

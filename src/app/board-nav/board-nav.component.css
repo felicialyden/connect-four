@@ -1,0 +1,11 @@
+.board-nav {
+    display: flex;
+    gap: 1.25rem;
+}
+
+.board-nav-item {
+    border: 2px solid black;
+    border-radius: 10rem;
+    height: 50px;
+    width: 50px;
+}

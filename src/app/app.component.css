@@ -3,11 +3,18 @@
     align-items: center;
     justify-content: center;
     gap: 2rem;
-    margin-top: 4rem;
+    margin-top: 1rem;
 }
 
 .turn-tracker {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.board-nav-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem; 
 }
