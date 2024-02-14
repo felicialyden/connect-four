@@ -1,3 +1,8 @@
+.title {
+    text-align: center;
+    margin-top: 2rem;
+}
+
 .game-content {
     display: flex;
     align-items: center;
@@ -10,4 +15,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.btn-wrapper {
+    margin-top: 2rem;
+    padding: 0 10rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.btn {
+    padding: 0.5rem;
+    margin-left: 2rem;
 }

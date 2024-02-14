@@ -1,6 +1,6 @@
 
   <main>
-      <app-navbar></app-navbar>
+    <h1 class="title">Connect four</h1>
   <section class="game-content">
       <app-player [playerNo]=1 [winner]=this.winner></app-player>
       <app-board (nextPlayer)="setNextPlayer($event)" (winner)="setWinner($event)"></app-board>
@@ -8,5 +8,12 @@
   </section>
   <div class="turn-tracker">
     <app-turn-tracker [playerNo]=this.player [winner]=this.winner></app-turn-tracker> 
+  </div>
+  <div class="btn-wrapper">
+    <div class="game-actions-wrapper">
+    <button class="btn" (click)="onNewGame()"> New game</button>
+    <button class="btn" (click)="onResetScore()"> Reset score</button>
+  </div>
+    <button class="btn" (click)="onSeeRules()">Rules</button>
   </div>
   </main>

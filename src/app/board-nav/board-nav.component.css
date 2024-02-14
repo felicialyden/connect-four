@@ -1,6 +1,7 @@
 .board-nav {
     display: flex;
     gap: 1.75rem;
+    margin-top: 3rem;
 }
 
 .board-nav-item {
@@ -8,4 +9,5 @@
     border-radius: 10rem;
     height: 50px;
     width: 50px;
+    cursor: pointer;
 }
