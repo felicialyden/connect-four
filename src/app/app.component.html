@@ -2,9 +2,9 @@
   <main>
       <app-navbar></app-navbar>
   <section class="game-content">
-      <app-player [playerNo]=1></app-player>
+      <app-player [playerNo]=1 [winner]=this.winner></app-player>
       <app-board (nextPlayer)="setNextPlayer($event)" (winner)="setWinner($event)"></app-board>
-      <app-player [playerNo]=2></app-player> 
+      <app-player [playerNo]=2 [winner]=this.winner></app-player> 
   </section>
   <div class="turn-tracker">
     <app-turn-tracker [playerNo]=this.player [winner]=this.winner></app-turn-tracker> 

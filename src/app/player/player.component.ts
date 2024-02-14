@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, SimpleChange } from '@angular/core';
 
 @Component({
   selector: 'app-player',
@@ -9,4 +9,14 @@ import { Component, Input } from '@angular/core';
 })
 export class PlayerComponent {
   @Input() playerNo! : number
+  @Input() winner! : number | null
+
+  score: number = 0
+
+  ngOnChanges(changes: SimpleChange) {
+    if(this.winner === this.playerNo) {
+      this.score += 1
+    }
+  }
+
 }
