@@ -14,9 +14,16 @@ import { TurnTrackerComponent } from './turn-tracker/turn-tracker.component';
 export class AppComponent {
   title = 'connect-four';
   player = 1
+  winner: number | null = null
   
   setNextPlayer(newPlayerNo: number) {
     this.player = newPlayerNo
+  }
+
+  setWinner(winner: number) {
+    this.winner = winner
+    return alert(`Player ${winner} win`)
+
   }
 
 }

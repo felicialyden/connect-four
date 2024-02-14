@@ -11,6 +11,7 @@ import { BoardSquareComponent } from '../board-square/board-square.component';
 
 export class BoardComponent {
   @Output() nextPlayer = new EventEmitter<number>();
+  @Output() winner = new EventEmitter<number>();
   player = 1
   grid: number[][] = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0 , 0], [0, 0, 0, 0]]
 
@@ -20,31 +21,31 @@ export class BoardComponent {
     const posX = Number(idArr[0]) -1
     const posY = Number(idArr[2]) -1
     this.grid[posX][posY] = this.player
-    console.log(this.grid)
     this.checkWinning(posX, posY)
     this.player === 1 ? this.player = 2 : this.player = 1
     this.nextPlayer.emit(this.player);
   }
 
   checkWinning(posX: number, posY :number){
-
     if(this.grid[posX].every(char => char === this.grid[posX][0]))  {
-      return alert(`${this.grid[posX][0]} win`)
+      this.winner.emit(this.grid[posX][0]);
+      return
     }
 
     const verticalArr = this.grid.map((row) => row[posY])
     if(verticalArr.every(char => char === verticalArr[0]))  {
-      return alert(`${verticalArr[0]} win`)
+      this.winner.emit(verticalArr[0]);
+      return
     }
 
     const leftDiagonal: number[] = []
     for (let i = 0; i < this.grid.length; i ++){
       leftDiagonal.push(this.grid[i][i])
     }
-
     if(leftDiagonal.every(char => char === leftDiagonal[0]))  {
       if(leftDiagonal[0] !== 0) {
-        return alert(`${leftDiagonal[0]} win`)
+        this.winner.emit(leftDiagonal[0]);
+        return
       }
     }
     
@@ -54,10 +55,11 @@ export class BoardComponent {
     }
     if(rightDiagonal.every(char => char === rightDiagonal[0]))  {
       if(rightDiagonal[0] !== 0) {
-        return alert(`${rightDiagonal[0]} win`)
+        this.winner.emit(rightDiagonal[0]);
+        return
       }
     }
-    
+
   }
 
 }
