@@ -26,10 +26,6 @@ export class AppComponent {
       width: '250px',
       data: {winner: this.winner}
     });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
   }
   
   setNextPlayer(newPlayerNo: number) {
