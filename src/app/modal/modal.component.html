@@ -1,4 +1,6 @@
-<div class="winner-modal" mat-dialog-content>
-    <p>Player {{data.winner}} win!</p>
-  <button class="btn" mat-button cdkFocusInitial (click)="closeDialog()">Close</button>
+<div class="{{ data.modal }}-modal modal" mat-dialog-content>
+  <p>{{ data.content }}</p>
+  <button class="btn" mat-button (click)="closeDialog()">
+    Close
+  </button>
 </div>

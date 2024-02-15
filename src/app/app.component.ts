@@ -16,8 +16,6 @@ import { Modal } from './modal/modal.component';
 export class AppComponent {
   title = 'connect-four';
   player = 1
-  resetScore = 0
-  newGame = 0
   winner: number | null = null
 
   @ViewChildren(BoardComponent)
@@ -25,11 +23,14 @@ export class AppComponent {
   @ViewChildren(PlayerComponent)
   childPlayer: QueryList<PlayerComponent> | undefined
 
-  constructor(@Inject(PLATFORM_ID) private platformId: any, public dialog: MatDialog,) {}
+  constructor(@Inject(PLATFORM_ID) private platformId: any, public dialog: MatDialog) {}
 
   openDialog(): void {
     this.dialog.open(Modal, {
-      data: {winner: this.winner}
+      data: {
+        content: `Player ${this.winner} wins!`,
+        modal: 'winner'
+    }
     });
   }
   
@@ -43,16 +44,19 @@ export class AppComponent {
   }
 
   onSeeRules() {
-    console.log('rules')
+    this.dialog.open(Modal, {
+      data: {
+        content: `Players take turns dropping one of their colored discs from the top into any column, with the disc falling to the lowest available space in that column. The game ends when one player successfully connects four discs in a row, or when the grid is completely filled without a winner, resulting in a draw.`,
+        modal: 'rules'
+      }
+    });
   }
 
   onGameAction = async (action: string) =>{
-    this.newGame += 1
     this.winner = null
     this.player = 1
     this.childBoard?.forEach(c => c.reset());
     if(action === 'resetScore') {
-      this.resetScore += 1
       window.localStorage.clear()
       this.childPlayer?.forEach(c => c.reset());
 

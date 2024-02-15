@@ -1,4 +1,4 @@
-import { Component, Inject, Input } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import {
   MatDialog,
   MatDialogRef,
@@ -6,7 +6,8 @@ import {
 } from '@angular/material/dialog';
 
 export interface DialogData {
-  winner: number | boolean;
+  content: number | boolean;
+  modal: string
 }
 @Component({
   selector: 'modal.component',

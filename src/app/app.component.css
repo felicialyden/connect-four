@@ -28,4 +28,6 @@
 .btn {
     padding: 0.5rem;
     margin-left: 2rem;
+    background-color: white;
+    border: 1px solid black;
 }
