@@ -10,7 +10,6 @@ import { Component, Inject, Input, PLATFORM_ID} from '@angular/core';
 })
 export class PlayerComponent {
   @Input() playerNo!: number;
-  @Input() winner!: number | null;
   @Input() resetScore!: number;
 
   score = 0
@@ -23,8 +22,8 @@ constructor(@Inject(PLATFORM_ID) private platformId: any) {}
       }
   }
 
-  ngOnChanges() {
-    if (this.winner === this.playerNo) {
+  onWin(winner: number) {
+    if (winner === this.playerNo) {
       this.score += 1;
       window.localStorage.setItem(
         `score-${this.playerNo}`,

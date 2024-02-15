@@ -7,9 +7,9 @@
 }
 
 .board-selected-1 {
-    background-color: red;
+    background-color: rgb(187, 14, 14);
 }
 
 .board-selected-2 {
-    background-color: blue;
+    background-color: rgb(40, 40, 109);
 }

@@ -25,10 +25,10 @@ export class AppComponent {
 
   constructor( public dialog: MatDialog ) {}
 
-  openDialog(): void {
+  openDialog(winner: number): void {
     this.dialog.open(ModalComponent, {
       data: {
-        content: `Player ${this.winner} wins!`,
+        content: `Player ${winner} wins!`,
         modal: 'winner'
     }
     });
@@ -40,7 +40,8 @@ export class AppComponent {
 
   setWinner(winner: number) {
     this.winner = winner
-    this.openDialog()
+    this.playerComponent?.forEach(c => c.onWin(winner));
+    this.openDialog(winner)
   }
 
   onSeeRules() {
