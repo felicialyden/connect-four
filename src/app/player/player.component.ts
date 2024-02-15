@@ -33,6 +33,6 @@ constructor(@Inject(PLATFORM_ID) private platformId: any) {}
         this.score.toString()
       );
     }
-    if (this.resetScore) this.score = 0;
+    if(this.resetScore) this.score = 0
   }
 }

@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { BoardComponent } from './board/board.component';
 import { PlayerComponent } from './player/player.component';
 import { TurnTrackerComponent } from './turn-tracker/turn-tracker.component';
 import { BoardNavComponent } from './board-nav/board-nav.component';
+import { MatDialog } from '@angular/material/dialog';
+import { Modal } from './modal/modal.component';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +18,18 @@ export class AppComponent {
   player = 1
   resetScore = false
   winner: number | null = null
+
+  constructor(@Inject(PLATFORM_ID) private platformId: any, public dialog: MatDialog,) {}
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(Modal, {
+      width: '250px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
   
   setNextPlayer(newPlayerNo: number) {
     this.player = newPlayerNo
@@ -23,8 +37,7 @@ export class AppComponent {
 
   setWinner(winner: number) {
     this.winner = winner
-    return alert(`Player ${winner} win`)
-
+    return this.openDialog()
   }
 
   onSeeRules() {
@@ -38,6 +51,9 @@ export class AppComponent {
 
   onResetScore() {
     this.resetScore = true
+    this.winner = null
+    this.player = 1
+    window.localStorage.clear()
   }
 
 }
