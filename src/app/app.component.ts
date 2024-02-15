@@ -4,7 +4,7 @@ import { PlayerComponent } from './player/player.component';
 import { TurnTrackerComponent } from './turn-tracker/turn-tracker.component';
 import { BoardNavComponent } from './board-nav/board-nav.component';
 import { MatDialog } from '@angular/material/dialog';
-import { Modal } from './modal/modal.component';
+import { ModalComponent } from './modal/modal.component';
 
 @Component({
   selector: 'app-root',
@@ -23,10 +23,10 @@ export class AppComponent {
   @ViewChildren(PlayerComponent)
   playerComponent: QueryList<PlayerComponent> | undefined
 
-  constructor(@Inject(PLATFORM_ID) private platformId: any, public dialog: MatDialog) {}
+  constructor( public dialog: MatDialog ) {}
 
   openDialog(): void {
-    this.dialog.open(Modal, {
+    this.dialog.open(ModalComponent, {
       data: {
         content: `Player ${this.winner} wins!`,
         modal: 'winner'
@@ -44,7 +44,7 @@ export class AppComponent {
   }
 
   onSeeRules() {
-    this.dialog.open(Modal, {
+    this.dialog.open(ModalComponent, {
       data: {
         content: `
         Players take turns dropping one of their colored discs from the top into any column, 

@@ -14,7 +14,7 @@ export interface DialogData {
   templateUrl: 'modal.component.html',
   styleUrls: ['modal.component.css'],
 })
-export class Modal {
+export class ModalComponent {
   constructor(
     public dialogRef: MatDialogRef<MatDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData

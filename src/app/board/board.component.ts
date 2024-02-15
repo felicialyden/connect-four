@@ -69,7 +69,7 @@ export class BoardComponent {
       if(row.every(char => char === row[0]) && row[0] !== 0){
         console.log(row)
         this.gameIsActive = false
-        this.winner.emit(this.grid[posX][0]);
+        this.winner.emit(row[0]);
         return
       }
     })
