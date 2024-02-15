@@ -1,4 +1,4 @@
-import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, Inject, PLATFORM_ID, QueryList, ViewChildren } from '@angular/core';
 import { BoardComponent } from './board/board.component';
 import { PlayerComponent } from './player/player.component';
 import { TurnTrackerComponent } from './turn-tracker/turn-tracker.component';
@@ -16,8 +16,14 @@ import { Modal } from './modal/modal.component';
 export class AppComponent {
   title = 'connect-four';
   player = 1
-  resetScore = false
+  resetScore = 0
+  newGame = 0
   winner: number | null = null
+
+  @ViewChildren(BoardComponent)
+  childBoard: QueryList<BoardComponent> | undefined
+  @ViewChildren(PlayerComponent)
+  childPlayer: QueryList<PlayerComponent> | undefined
 
   constructor(@Inject(PLATFORM_ID) private platformId: any, public dialog: MatDialog,) {}
 
@@ -33,24 +39,24 @@ export class AppComponent {
 
   setWinner(winner: number) {
     this.winner = winner
-    return this.openDialog()
+    this.openDialog()
   }
 
   onSeeRules() {
     console.log('rules')
   }
 
-  onNewGame() {
-    console.log('new game')
+  onGameAction = async (action: string) =>{
+    this.newGame += 1
     this.winner = null
     this.player = 1
-  }
+    this.childBoard?.forEach(c => c.reset());
+    if(action === 'resetScore') {
+      this.resetScore += 1
+      window.localStorage.clear()
+      this.childPlayer?.forEach(c => c.reset());
 
-  onResetScore() {
-    this.resetScore = true
-    this.winner = null
-    this.player = 1
-    window.localStorage.clear()
+    }
   }
 
 }

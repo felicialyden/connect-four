@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChange } from '@angular/core';
 import { BoardSquareComponent } from '../board-square/board-square.component';
 import { BoardNavComponent } from '../board-nav/board-nav.component';
 
@@ -13,11 +13,21 @@ import { BoardNavComponent } from '../board-nav/board-nav.component';
 export class BoardComponent {
   @Output() nextPlayer = new EventEmitter<number>();
   @Output() winner = new EventEmitter<number>();
+  @Input() newGame: number = 0;
+
   player = 1
   gameIsActive = true
   posX = 0
 
   grid: number[][] = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0 , 0], [0, 0, 0, 0]]
+
+  reset() {
+    this.grid = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0 , 0], [0, 0, 0, 0]]
+    this.player = 1
+    this.gameIsActive = true
+    const boardElements = document.querySelectorAll(".board-element")
+    boardElements.forEach((boardElement) => boardElement.classList.remove('board-selected-1', 'board-selected-2'))
+  }
 
   setChosenSquare(chosenLine: number) {
     if(!this.gameIsActive) return
