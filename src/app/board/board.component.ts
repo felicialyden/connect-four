@@ -14,11 +14,13 @@ export class BoardComponent {
   @Output() nextPlayer = new EventEmitter<number>();
   @Output() winner = new EventEmitter<number>();
   player = 1
+  gameIsActive = true
   posX = 0
 
   grid: number[][] = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0 , 0], [0, 0, 0, 0]]
 
   setChosenSquare(chosenLine: number) {
+    if(!this.gameIsActive) return
     const posY = chosenLine
     this.findSquare(chosenLine)
     const squareId = `${this.posX}-${posY}`
@@ -41,6 +43,7 @@ export class BoardComponent {
 
   checkWinning(posX: number, posY :number){
     if(this.grid[posX].every(char => char === this.grid[posX][0])) {
+      this.gameIsActive = false
       this.winner.emit(this.grid[posX][0]);
       return
     }
@@ -48,6 +51,7 @@ export class BoardComponent {
     const verticalArr = this.grid.map((row) => row[posY])
     if(verticalArr.every(char => char === verticalArr[0]))  {
       this.winner.emit(verticalArr[0]);
+      this.gameIsActive = false
       return
     }
 
@@ -57,6 +61,7 @@ export class BoardComponent {
     }
     if(leftDiagonal.every(char => char === leftDiagonal[0]))  {
       if(leftDiagonal[0] !== 0) {
+        this.gameIsActive = false
         this.winner.emit(leftDiagonal[0]);
         return
       }
@@ -68,11 +73,10 @@ export class BoardComponent {
     }
     if(rightDiagonal.every(char => char === rightDiagonal[0]))  {
       if(rightDiagonal[0] !== 0) {
+        this.gameIsActive = false
         this.winner.emit(rightDiagonal[0]);
         return
       }
     }
-
   }
-
 }

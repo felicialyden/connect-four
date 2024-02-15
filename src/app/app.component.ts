@@ -22,8 +22,7 @@ export class AppComponent {
   constructor(@Inject(PLATFORM_ID) private platformId: any, public dialog: MatDialog,) {}
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(Modal, {
-      width: '250px',
+    this.dialog.open(Modal, {
       data: {winner: this.winner}
     });
   }
@@ -43,7 +42,8 @@ export class AppComponent {
 
   onNewGame() {
     console.log('new game')
-
+    this.winner = null
+    this.player = 1
   }
 
   onResetScore() {
