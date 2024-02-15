@@ -15,8 +15,6 @@ export class PlayerComponent {
 
   score = 0
 
-
-
 constructor(@Inject(PLATFORM_ID) private platformId: any) {}
 
   ngOnInit() {

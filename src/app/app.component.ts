@@ -24,6 +24,7 @@ export class AppComponent {
   openDialog(): void {
     const dialogRef = this.dialog.open(Modal, {
       width: '250px',
+      data: {winner: this.winner}
     });
 
     dialogRef.afterClosed().subscribe(result => {
