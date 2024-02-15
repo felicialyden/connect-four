@@ -35,7 +35,7 @@ export class BoardComponent {
     this.findSquare(chosenLine)
     const squareId = `${this.posX}-${posY}`
     document.getElementById(squareId)?.classList.add(`board-selected-${this.player}`)
-    this.checkWinning(this.posX, posY)
+    this.evaluateWinning(this.posX, posY)
     this.player === 1 ? this.player = 2 : this.player = 1
     this.nextPlayer.emit(this.player);
   }
@@ -51,42 +51,27 @@ export class BoardComponent {
     }
   }
 
-  checkWinning(posX: number, posY :number){
-    if(this.grid[posX].every(char => char === this.grid[posX][0])) {
-      this.gameIsActive = false
-      this.winner.emit(this.grid[posX][0]);
-      return
-    }
-
+  evaluateWinning(posX: number, posY :number){
+    const horizontalArr = this.grid[posX]
     const verticalArr = this.grid.map((row) => row[posY])
-    if(verticalArr.every(char => char === verticalArr[0]))  {
-      this.winner.emit(verticalArr[0]);
-      this.gameIsActive = false
-      return
-    }
-
     const leftDiagonal: number[] = []
     for (let i = 0; i < this.grid.length; i ++){
       leftDiagonal.push(this.grid[i][i])
     }
-    if(leftDiagonal.every(char => char === leftDiagonal[0]))  {
-      if(leftDiagonal[0] !== 0) {
-        this.gameIsActive = false
-        this.winner.emit(leftDiagonal[0]);
-        return
-      }
-    }
-    
     const rightDiagonal: number[] = []
     for (let i = this.grid.length - 1; i >= 0; i--){
       rightDiagonal.push(this.grid[this.grid.length - 1 - i][i])
     }
-    if(rightDiagonal.every(char => char === rightDiagonal[0]))  {
-      if(rightDiagonal[0] !== 0) {
+
+    const rowsToEvaluate = [horizontalArr, verticalArr, leftDiagonal, rightDiagonal]
+
+    rowsToEvaluate.forEach((row) => {
+      if(row.every(char => char === row[0]) && row[0] !== 0){
+        console.log(row)
         this.gameIsActive = false
-        this.winner.emit(rightDiagonal[0]);
+        this.winner.emit(this.grid[posX][0]);
         return
       }
-    }
+    })
   }
 }

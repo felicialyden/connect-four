@@ -19,9 +19,9 @@ export class AppComponent {
   winner: number | null = null
 
   @ViewChildren(BoardComponent)
-  childBoard: QueryList<BoardComponent> | undefined
+  boardComponent: QueryList<BoardComponent> | undefined
   @ViewChildren(PlayerComponent)
-  childPlayer: QueryList<PlayerComponent> | undefined
+  playerComponent: QueryList<PlayerComponent> | undefined
 
   constructor(@Inject(PLATFORM_ID) private platformId: any, public dialog: MatDialog) {}
 
@@ -46,7 +46,12 @@ export class AppComponent {
   onSeeRules() {
     this.dialog.open(Modal, {
       data: {
-        content: `Players take turns dropping one of their colored discs from the top into any column, with the disc falling to the lowest available space in that column. The game ends when one player successfully connects four discs in a row, or when the grid is completely filled without a winner, resulting in a draw.`,
+        content: `
+        Players take turns dropping one of their colored discs from the top into any column, 
+        with the disc falling to the lowest available space in that column. 
+        The game ends when one player successfully connects four discs in a row, 
+        or when the grid is completely filled without a winner, resulting in a draw.
+        `,
         modal: 'rules'
       }
     });
@@ -55,10 +60,10 @@ export class AppComponent {
   onGameAction = async (action: string) =>{
     this.winner = null
     this.player = 1
-    this.childBoard?.forEach(c => c.reset());
+    this.boardComponent?.forEach(c => c.reset());
     if(action === 'resetScore') {
       window.localStorage.clear()
-      this.childPlayer?.forEach(c => c.reset());
+      this.playerComponent?.forEach(c => c.reset());
 
     }
   }
