@@ -1,6 +1,9 @@
 .title {
     text-align: center;
-    margin-top: 2rem;
+    margin-top: 3rem;
+    color: white;
+    font: 3rem;
+    letter-spacing: 0.25rem;
 }
 
 .game-content {

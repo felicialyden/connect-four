@@ -1,10 +1,15 @@
 .player {
-    border: 2px solid black;
+    border: solid hsl(217, 16%, 45%) 3px;
     border-radius: 1rem;
-    padding: 1rem;
+    padding: 1rem 2rem;
     text-align: center;
+    color: white;
 }
 
 .player-title {
     margin-bottom: 1rem;
+}
+
+.player-score {
+    font-size: 2rem;
 }

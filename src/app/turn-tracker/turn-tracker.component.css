@@ -1,7 +1,9 @@
 .turn-tracker {
     margin-top: 1rem;
-    border: 2px solid black;
+    border: solid hsl(217, 16%, 45%) 3px;
     border-radius: 1rem;
-    padding: 1rem;
     text-align: center;
+    padding: 1rem 2rem;
+    color: white;
+
 }
