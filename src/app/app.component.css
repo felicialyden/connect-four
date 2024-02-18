@@ -26,9 +26,29 @@
 }
 
 .btn {
-    padding: 0.5rem;
+    padding: 0.5rem 0.75rem;
     margin-left: 2rem;
-    background-color: white;
-    border: 1px solid black;
+    border-radius: 0.25rem;
     cursor: pointer;
+}
+
+.btn-primary  {
+    background-color: white;
+    border: none;
+}
+
+.btn-primary:hover {
+    color: hsl(214, 51%, 49%);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+}
+
+.btn-secondary:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid white;
 }
