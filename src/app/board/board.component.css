@@ -2,8 +2,10 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    border: 2px solid black;
-}
+    border-radius: 0.5rem;
+    background-color: white;
+    padding: 0.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);}
 
 .board-wrapper {
     display: flex;
