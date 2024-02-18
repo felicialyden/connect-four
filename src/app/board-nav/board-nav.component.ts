@@ -1,9 +1,12 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { NgIconComponent, provideIcons } from '@ng-icons/core';
+import { lucideArrowBigDown } from '@ng-icons/lucide';
 
 @Component({
   selector: 'app-board-nav',
   standalone: true,
-  imports: [],
+  imports: [NgIconComponent],
+  viewProviders: [provideIcons({ lucideArrowBigDown })],
   templateUrl: './board-nav.component.html',
   styleUrl: './board-nav.component.css'
 })

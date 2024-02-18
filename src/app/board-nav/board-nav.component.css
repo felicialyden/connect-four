@@ -5,9 +5,20 @@
 }
 
 .board-nav-item {
-    border: 2px solid black;
+    border: solid hsl(217, 16%, 45%) 2px;
     border-radius: 10rem;
     height: 50px;
     width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
+}
+
+.board-nav-icon {
+    color: hsl(217, 16%, 45%);
+}
+
+.board-nav-item:hover{
+    background-color: white;
 }
