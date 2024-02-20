@@ -1,6 +1,6 @@
 <div class="{{ data.modal }}-modal modal" mat-dialog-content>
-  <p>{{ data.content }}</p>
   <button class="btn" mat-button (click)="closeDialog()">
-    Close
+    <ng-icon size="12" strokeWidth="2" class="close-icon" name="lucideX"></ng-icon>
   </button>
+  <p>{{ data.content }}</p>
 </div>

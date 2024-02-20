@@ -1,25 +1,32 @@
 .modal {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     background-color: white;
+    padding: 1rem;
+    padding-bottom: 2rem;
+    max-width: 30rem;
 }
 
 .winner-modal {
-    padding: 1rem 2rem;
     text-align: center;
 }
 
-.rules-modal {
-    padding: 2rem;
-}
-
 .btn {
-    margin-top: 1rem;
-    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    font-size: 0.5rem;
     background-color: white;
     border: 1px solid black;
-    padding: 0.5rem 0.75rem;
     border-radius: 0.25rem;
+    padding: 0.15rem;
+    margin-bottom: 0.75rem;
     align-self: end;
     cursor: pointer;
+}
+
+.btn:hover {
+    background-color: hsl(214, 47%, 23%);
+    color: white;
+    border: 1px solid white;
 }

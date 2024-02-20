@@ -4,6 +4,8 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
+import { NgIconComponent, provideIcons } from '@ng-icons/core';
+import { lucideX } from '@ng-icons/lucide';
 
 export interface DialogData {
   content: number | boolean;
@@ -12,6 +14,9 @@ export interface DialogData {
 @Component({
   selector: 'modal.component',
   templateUrl: 'modal.component.html',
+  standalone: true,
+  imports: [NgIconComponent],
+  viewProviders: [provideIcons({ lucideX })],
   styleUrls: ['modal.component.css'],
 })
 export class ModalComponent {
