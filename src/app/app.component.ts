@@ -29,7 +29,7 @@ export class AppComponent {
     this.dialog.open(ModalComponent, {
       data: {
         content: `Player ${winner} wins!`,
-        modal: 'winner'
+        modal: 'winner',
     }
     });
   }
@@ -48,12 +48,12 @@ export class AppComponent {
     this.dialog.open(ModalComponent, {
       data: {
         content: `
-        Players take turns dropping one of their colored discs from the top into any column, 
-        with the disc falling to the lowest available space in that column.
-        The game ends when one player successfully connects four discs in a row,
-        or when the grid is completely filled without a winner, resulting in a draw.
+        Players take turns dropping one of their colored discs from the top into any column, with the disc falling to the lowest available space in that column.
+        
+        The game ends when one player successfully connects four discs in a row, or when the grid is completely filled without a winner, resulting in a draw.
         `,
-        modal: 'rules'
+        modal: 'rules',
+        title: 'Connect four rules'
       }
     });
   }

@@ -2,13 +2,16 @@
     display: flex;
     flex-direction: column;
     background-color: white;
-    padding: 1rem;
+    padding: 1.5rem;
     padding-bottom: 2rem;
     max-width: 30rem;
+    min-width: 20rem;
+    white-space: pre-line; 
 }
 
 .winner-modal {
     text-align: center;
+    font-size: 1.75rem;
 }
 
 .btn {
@@ -29,4 +32,9 @@
     background-color: hsl(214, 47%, 23%);
     color: white;
     border: 1px solid white;
+}
+
+.modal-title-wrapper {
+    display: flex;
+    justify-content: space-between;
 }

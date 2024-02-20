@@ -10,6 +10,7 @@ import { lucideX } from '@ng-icons/lucide';
 export interface DialogData {
   content: number | boolean;
   modal: string
+  title: string
 }
 @Component({
   selector: 'modal.component',
