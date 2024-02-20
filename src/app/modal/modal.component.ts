@@ -6,6 +6,7 @@ import {
 } from '@angular/material/dialog';
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
 import { lucideX } from '@ng-icons/lucide';
+import 'animate.css';
 
 export interface DialogData {
   content: number | boolean;

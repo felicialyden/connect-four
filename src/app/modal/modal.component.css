@@ -1,8 +1,9 @@
+
 .modal {
     display: flex;
     flex-direction: column;
     background-color: white;
-    padding: 1.5rem;
+    padding: 1rem;
     padding-bottom: 2rem;
     max-width: 30rem;
     min-width: 20rem;
@@ -11,7 +12,12 @@
 
 .winner-modal {
     text-align: center;
-    font-size: 1.75rem;
+    font-size: 1.5rem;
+}
+
+.winner-modal>.modal-content {
+    animation: flash;
+    animation-duration: 2s;
 }
 
 .btn {
