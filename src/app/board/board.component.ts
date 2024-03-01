@@ -42,7 +42,7 @@ export class BoardComponent {
 
   findSquare(posY: number) {
     const verticalArr = this.grid.map((row) => row[posY])
-    for(let i = 3; i >= 0; i--){
+    for(let i = 5; i >= 0; i--){
       if(verticalArr[i] === 0) {
         this.grid[i][posY] = this.player
         this.posX = i
@@ -66,10 +66,12 @@ export class BoardComponent {
     const rowsToEvaluate = [horizontalArr, verticalArr, leftDiagonal, rightDiagonal]
 
     rowsToEvaluate.forEach((row) => {
-      if(row.every(char => char === row[0]) && row[0] !== 0){
+      const regex = /1{4}|2{4}/
+      const rowString = row.toString().replaceAll(',', '')
+      if(regex.test(rowString)){
         console.log(row)
         this.gameIsActive = false
-        this.winner.emit(row[0]);
+        this.winner.emit(row[3]);
         return
       }
     })
